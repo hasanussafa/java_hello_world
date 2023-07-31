@@ -4,7 +4,7 @@ pipeline {
 
     environment {
        
-        DOCKERHUB_CREDENTIALS = credentials('jenkins_maven_p2')
+        DOCKERHUB_CREDENTIALS = credentials('java_hello_world')
        
     }
     
@@ -12,7 +12,7 @@ pipeline {
         
         stage('gitclone') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/hasanussafa/jenkins_maven_p1.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/hasanussafa/java_hello_world.git']])
             
             
                 
@@ -21,7 +21,7 @@ pipeline {
         
         stage('Build') {
             steps {
-                sh '/usr/local/bin/docker build -t hasanussafa/jenkins_maven_p2:latest .'
+                sh '/usr/local/bin/docker build -t hasanussafa/java_hello_world:latest .'
                 
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         
         stage('Push') {
             steps {
-                sh '/usr/local/bin/docker push hasanussafa/jenkins_maven_p2:latest'
+                sh '/usr/local/bin/docker push hasanussafa/java_hello_world:latest'
                 
             }
         }
