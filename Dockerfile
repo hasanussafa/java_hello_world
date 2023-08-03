@@ -1,4 +1,4 @@
-FROM openjdk:20.0.1
+FROM openjdk
 WORKDIR /main
 COPY . /main/
 RUN javac Main.java
