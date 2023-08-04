@@ -1,5 +1,5 @@
-FROM openjdk:18
-WORKDIR /main
-COPY . /main/
+FROM openjdk:11
+COPY . /usr/src/myapp
+WORKDIR /usr/src/myapp
 RUN javac Main.java
-ENTRYPOINT [ "java", "Main" ]
+CMD ["java", "Main"]
